@@ -1,6 +1,6 @@
 # atcorder-one-question-everyday
 
-Atcorderやりたい欲と, Rustやりたい欲が同時に来たので1日1問, 問題を解きます(元気が合ったら1問以上解くかも?)
+Atcorderやりたい欲と, Rustやりたい欲が同時に来たので1日1問, 問題を解きます(元気が合ったらもっと解くかも?)
 
 ## References
 - [The Rust Programming Language 日本語版](https://doc.rust-jp.rs/book-ja/)
