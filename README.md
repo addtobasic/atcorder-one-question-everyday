@@ -2,6 +2,21 @@
 
 Atcorderやりたい欲と, Rustやりたい欲が同時に来たので1日1問, 問題を解きます(元気が合ったらもっと解くかも?)
 
+## Requirements
+- rustc
+- cargo
+
+## Setup
+```
+cargo install cargo-generate
+cargo generate --git https://github.com/rust-lang-ja/atcoder-rust-base --branch ja
+```
+
+## Test
+```
+cargo test
+```
+
 ## References
 - [The Rust Programming Language 日本語版](https://doc.rust-jp.rs/book-ja/)
 - [AtCoderコンテストにRustで参加するためのガイドブック](https://doc.rust-jp.rs/atcoder-rust-resources/)
