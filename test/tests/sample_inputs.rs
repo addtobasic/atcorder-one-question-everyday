@@ -7,15 +7,19 @@ fn sample1() {
     let testdir = TestDir::new(BIN, "");
     let output = testdir
         .cmd()
-        .output_with_stdin(r#"
-        1
-        2 3
-        test
-
-"#)
+        .output_with_stdin(
+            r#"
+        3 4
+"#,
+        )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "6 test\n");
+    assert_eq!(
+        output.stdout_str(),
+        "
+    Even
+    \n"
+    );
     assert!(output.stderr_str().is_empty());
 }
 
@@ -24,13 +28,18 @@ fn sample2() {
     let testdir = TestDir::new(BIN, "");
     let output = testdir
         .cmd()
-        .output_with_stdin(r#"72
-        128 256
-        myonmyon
-
-"#)
+        .output_with_stdin(
+            r#"
+        1 21
+        "#,
+        )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "456 myonmyon\n");
+    assert_eq!(
+        output.stdout_str(),
+        "
+    Odd
+    \n"
+    );
     assert!(output.stderr_str().is_empty());
 }
