@@ -9,12 +9,13 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            20 2 5
+            2
+            3 1
 "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "84\n");
+    assert_eq!(output.stdout_str(), "2\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -25,12 +26,13 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            10 1 2
+            3
+            2 7 4
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "13\n");
+    assert_eq!(output.stdout_str(), "5\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -41,11 +43,12 @@ fn sample3() {
         .cmd()
         .output_with_stdin(
             r#"
-            100 4 16
+            4
+            20 18 2 18
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "4554\n");
+    assert_eq!(output.stdout_str(), "18\n");
     assert!(output.stderr_str().is_empty());
 }
