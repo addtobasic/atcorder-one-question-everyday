@@ -9,16 +9,12 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            4
-            10
-            8
-            8
-            6
+            9 45000
 "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "3\n");
+    assert_eq!(output.stdout_str(), "4 0 5\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -29,15 +25,12 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            3
-            15
-            15
-            15
+            20 196000
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "1\n");
+    assert_eq!(output.stdout_str(), "-1 -1 -1\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -48,18 +41,27 @@ fn sample3() {
         .cmd()
         .output_with_stdin(
             r#"
-            7
-            50
-            30
-            50
-            100
-            50
-            80
-            30
+            1000 1234000
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "4\n");
+    assert_eq!(output.stdout_str(), "14 27 959\n");
+    assert!(output.stderr_str().is_empty());
+}
+
+#[test]
+fn sample4() {
+    let testdir = TestDir::new(BIN, "");
+    let output = testdir
+        .cmd()
+        .output_with_stdin(
+            r#"
+            2000 20000000
+        "#,
+        )
+        .tee_output()
+        .expect_success();
+    assert_eq!(output.stdout_str(), "2000 0 0\n");
     assert!(output.stderr_str().is_empty());
 }
