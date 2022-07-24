@@ -9,12 +9,14 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            erasedream
+            2
+            3 1 2
+            6 1 1
 "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "YES\n");
+    assert_eq!(output.stdout_str(), "Yes\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -25,12 +27,13 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            dreameraser
+            1
+            2 100 100
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "YES\n");
+    assert_eq!(output.stdout_str(), "No\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -41,11 +44,13 @@ fn sample3() {
         .cmd()
         .output_with_stdin(
             r#"
-            dreamerer
+            2
+            5 1 1
+            100 1 1
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "NO\n");
+    assert_eq!(output.stdout_str(), "No\n");
     assert!(output.stderr_str().is_empty());
 }
