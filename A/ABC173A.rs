@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n: usize,
+        x: usize,
     }
 
     println!("{}", (10000 - n) % 1000);
