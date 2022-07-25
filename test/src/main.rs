@@ -2,13 +2,20 @@ use proconio::input;
 
 fn main() {
     input! {
-        n: isize,
+        s: String,
     }
 
-    if n >= 30 {
-        println!("Yes");
+    let mut count = 0;
+    let mut ans= 0;
+
+    for c in s.chars() {
+        if c == 'R' {
+            count += 1;
+        } else {
+            count = 0;
+        }
+        ans = ans.max(count);
     }
-    else {
-        println!("No");
-    }
+
+    println!("{}", ans);
 }
