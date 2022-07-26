@@ -2,12 +2,12 @@ use proconio::input;
 
 fn main() {
     input! {
-        x: isize,
+        s: String,
     }
 
-    if x == 1 {
-        println!("{}", 0);
+    if s.ends_with("s") {
+        println!("{}es", s)
     } else {
-        println!("{}", 1);
+        println!("{}s", s)
     }
 }
