@@ -9,7 +9,7 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            5 3 7 11
+            10 3
         "#,
         )
         .tee_output()
@@ -25,11 +25,11 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            100 100 1 100
+            1000 1
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "1\n");
+    assert_eq!(output.stdout_str(), "1000\n");
     assert!(output.stderr_str().is_empty());
 }
