@@ -9,12 +9,13 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            2
+            200 300
+
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "White\n");
+    assert_eq!(output.stdout_str(), "200\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -25,11 +26,12 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            5
+            10000 0
+
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "Black\n");
+    assert_eq!(output.stdout_str(), "20100\n");
     assert!(output.stderr_str().is_empty());
 }
