@@ -9,12 +9,13 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            10 120
+            0 10
+            0 10
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "Yes\n");
+    assert_eq!(output.stdout_str(), "10\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -25,11 +26,29 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            10 125
+            -100 -100
+            100 100
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "No\n");
+    assert_eq!(output.stdout_str(), "-200\n");
+    assert!(output.stderr_str().is_empty());
+}
+
+#[test]
+fn sample3() {
+    let testdir = TestDir::new(BIN, "");
+    let output = testdir
+        .cmd()
+        .output_with_stdin(
+            r#"
+            -100 100
+            -100 100
+        "#,
+        )
+        .tee_output()
+        .expect_success();
+    assert_eq!(output.stdout_str(), "200\n");
     assert!(output.stderr_str().is_empty());
 }
