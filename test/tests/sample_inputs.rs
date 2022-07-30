@@ -9,13 +9,21 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            cupofcoffee
-            cupofhottea
+            6
+            AC
+            TLE
+            AC
+            AC
+            WA
+            TLE
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "4\n");
+    assert_eq!(output.stdout_str(), "AC x 3
+WA x 1
+TLE x 2
+RE x 0\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -26,29 +34,24 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            abcde
-            bcdea
+            10
+            AC
+            AC
+            AC
+            AC
+            AC
+            AC
+            AC
+            AC
+            AC
+            AC
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "5\n");
-    assert!(output.stderr_str().is_empty());
-}
-
-#[test]
-fn sample3() {
-    let testdir = TestDir::new(BIN, "");
-    let output = testdir
-        .cmd()
-        .output_with_stdin(
-            r#"
-            apple
-            apple
-        "#,
-        )
-        .tee_output()
-        .expect_success();
-    assert_eq!(output.stdout_str(), "0\n");
+    assert_eq!(output.stdout_str(), "AC x 10
+WA x 0
+TLE x 0
+RE x 0\n");
     assert!(output.stderr_str().is_empty());
 }
