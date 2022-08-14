@@ -9,14 +9,14 @@ fn sample1() {
         .cmd()
         .output_with_stdin(
             r#"
-            10 2 20
-            9 11
-            13 17
+            2 3
+            2 2 3
+            3 2 2
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "Yes\n");
+    assert_eq!(output.stdout_str(), "2\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -27,14 +27,15 @@ fn sample2() {
         .cmd()
         .output_with_stdin(
             r#"
-            10 2 20
-            9 11
-            13 16
+            3 3
+            99 99 99
+            99 0 99
+            99 99 99
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "No\n");
+    assert_eq!(output.stdout_str(), "792\n");
     assert!(output.stderr_str().is_empty());
 }
 
@@ -45,48 +46,14 @@ fn sample3() {
         .cmd()
         .output_with_stdin(
             r#"
-            15 3 30
-            5 8
-            15 17
-            24 27
+            3 2
+            4 4
+            4 4
+            4 4
         "#,
         )
         .tee_output()
         .expect_success();
-    assert_eq!(output.stdout_str(), "Yes\n");
-    assert!(output.stderr_str().is_empty());
-}
-
-#[test]
-fn sample4() {
-    let testdir = TestDir::new(BIN, "");
-    let output = testdir
-        .cmd()
-        .output_with_stdin(
-            r#"
-            20 1 30
-            20 29
-        "#,
-        )
-        .tee_output()
-        .expect_success();
-    assert_eq!(output.stdout_str(), "No\n");
-    assert!(output.stderr_str().is_empty());
-}
-
-#[test]
-fn sample5() {
-    let testdir = TestDir::new(BIN, "");
-    let output = testdir
-        .cmd()
-        .output_with_stdin(
-            r#"
-            20 1 30
-            1 10
-        "#,
-        )
-        .tee_output()
-        .expect_success();
-    assert_eq!(output.stdout_str(), "No\n");
+    assert_eq!(output.stdout_str(), "0\n");
     assert!(output.stderr_str().is_empty());
 }
