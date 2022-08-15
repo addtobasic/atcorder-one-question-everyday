@@ -10,7 +10,7 @@ fn main() {
         a: [isize; n],
         b: [isize; n],
     }
-    
+
     let mut inner_product = 0;
 
     for i in 0..n {
