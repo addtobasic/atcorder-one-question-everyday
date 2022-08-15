@@ -9,13 +9,15 @@ fn main() {
         n: usize,
         xy: [(isize, isize); n],
     }
-    
+
     let mut ans = 0;
 
     for i in 0..n {
+        let (xi, yi) = xy[i];
         for j in i + 1..n {
-            let dx = xy[i].0 - xy[j].0;
-            let dy = xy[i].1 - xy[j].1;
+            let (xj, yj) = xy[j];
+            let dx = xj - xi;
+            let dy = yj - yi;
 
             let slope = dy as f64 / dx as f64;
 
