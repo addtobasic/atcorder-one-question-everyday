@@ -9,7 +9,7 @@ fn main() {
         n: usize,
         xy: [(isize, isize); n],
     }
-    
+
     let mut ans = 0;
 
     for i in 0..n {
