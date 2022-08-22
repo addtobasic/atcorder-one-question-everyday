@@ -6,17 +6,17 @@ use std::num;
 
 fn main() {
     input! {
-        n: usize,
-        mut a: [usize; n],
-        mut b: [usize; n],
+        mut n: usize,
+        k: usize,
     }
 
-    a.sort_by_key(|&x| cmp::Reverse(x));
-    b.sort();
-
-    if b[0] >= a[0] {
-        println!("{}", b[0] - a[0] + 1);
-    } else {
-        println!("{}", 0);
+    for _ in 0..k {
+        if n % 200 == 0 {
+            n /= 200;
+        } else {
+            n = n * 1000 + 200;
+        }
     }
+
+    println!("{}", n);
 }
