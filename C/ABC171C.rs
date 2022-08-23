@@ -15,7 +15,7 @@ fn main() {
         v.push(n % 26);
         n /= 26
     }
-    
+
     let ans = v
         .into_iter()
         .rev()
